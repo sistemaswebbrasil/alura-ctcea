@@ -18,21 +18,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidacaoPetDisponivelTest {
 
     @InjectMocks
-    ValidacaoPetDisponivel validacao;
-
+    private ValidacaoPetDisponivel validacao;
     @Mock
     private PetRepository petRepository;
 
     @Mock
     private Pet pet;
-
     @Mock
     private SolicitacaoAdocaoDto dto;
 
     @Test
-    void deveriaPermitirSolicitacaoDeAdocaoPet() {
+    void deveriaPermitirSolicitacaoDeAdocaoPet(){
 
-        // ARRANGE
+        //ARRANGE
         BDDMockito.given(petRepository.getReferenceById(dto.idPet())).willReturn(pet);
         BDDMockito.given(pet.getAdotado()).willReturn(false);
 
@@ -43,9 +41,9 @@ class ValidacaoPetDisponivelTest {
     }
 
     @Test
-    void NaoDeveriaPermitirSolicitacaoDeAdocaoPet() {
+    void naoDeveriaPermitirSolicitacaoDeAdocaoPet(){
 
-        // ARRANGE
+        //ARRANGE
         BDDMockito.given(petRepository.getReferenceById(dto.idPet())).willReturn(pet);
         BDDMockito.given(pet.getAdotado()).willReturn(true);
 
